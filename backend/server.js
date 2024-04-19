@@ -17,6 +17,6 @@ app.get("/",(req,res)=>{
 app.use("/doctor-availability",doctorAvailabilityRouter);
 
 const port  = process.env.PORT;
-app.listen(port,(req,res)=>{
+app.listen(port,()=>{
     console.log("Connection to the port ",port," is successfully established")
 });

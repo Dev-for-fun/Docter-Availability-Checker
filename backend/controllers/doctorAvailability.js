@@ -40,10 +40,11 @@ const handleAvailabilityTimeAndDate = async(req,res)=>{
     if(time.length ==4){
         time = "0"+time;
     }
-    
-    console.log(time);
+
+
     let respData = findAvailabilitySlot(weekdays[day],time,date);
     
+    //handling the case if the availability slot is in the next day
     if(!respData){
         dateObject.setDate(dateObject.getDate()+1);
         if(dateObject.getDay()==0){
@@ -64,7 +65,8 @@ const handleAvailabilityTimeAndDate = async(req,res)=>{
         }
     }
     
-    res.status(200).render("Home",{respData});
+    //rendering the ejs which shows the respData on the page
+    return res.status(200).render("Home",{respData});
 }
 
 export default handleAvailabilityTimeAndDate;
